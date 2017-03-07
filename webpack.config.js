@@ -29,6 +29,7 @@ module.exports = {
 			Nav: __dirname + '/app/components/Nav.jsx',
 			Timer: __dirname + '/app/components/Timer.jsx',
 			Countdown: __dirname + '/app/components/Countdown.jsx',
+			Clock: __dirname + '/app/components/Clock.jsx',
 			ApplicationStyles: __dirname + '/app/styles/app.scss'
 		},
 		extensions: ['.js','.jsx']
