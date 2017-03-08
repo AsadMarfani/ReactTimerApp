@@ -2,11 +2,11 @@
   display: flex;
   align-items: center;
   background-color: $clock-bg-color;
-  border: 2px solid $clock-border-color;
+  border: 5px dashed $clock-border-color;
   border-radius: 50%;
   justify-content: center;
-  height: 14rem;
-  width: 14rem;
+  height: 15rem;
+  width: 15rem;
   margin: 4rem auto;
 }
 
