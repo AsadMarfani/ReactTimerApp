@@ -79,6 +79,7 @@ var Countdown = React.createClass({
       };
         return(
             <div>
+                <h2 className="text-center" style = {{fontFamily: 'Baskerville Old Face', fontWeight: 'bold'}}>Countdown Component</h2>
                 <Clock totalSeconds = {count}/>
                 {renderControls()}
             </div>
