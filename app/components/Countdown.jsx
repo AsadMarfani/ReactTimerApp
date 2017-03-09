@@ -12,7 +12,6 @@ var Countdown = React.createClass({
     },
     componentDidUpdate: function (prevProps, prevState) {
         if(this.state.countdownStatus !== prevState.countdownStatus) {
-            console.log(this.state.countdownStatus);
             switch (this.state.countdownStatus) {
                 case 'started':
                     this.startTimer();
@@ -35,6 +34,11 @@ var Countdown = React.createClass({
             this.setState({
                 count: newCount >= 0 ? newCount : 0
             });
+            if(newCount === 0) {
+                this.setState({
+                    countdownStatus: 'stopped'
+                })
+            }
         },1000);
     },
     _handleCountdownTimer: function (totalSeconds) {
@@ -47,6 +51,21 @@ var Countdown = React.createClass({
       this.setState({
           countdownStatus: newStatus
       });
+    },
+    componentWillUpdate: function (nextProps, nextState) {
+      console.log('componentWillUpdate');
+    },
+    componentWillUnmount: function () {
+        console.log('componentWillUnmount');
+        clearInterval(this.timer);
+        console.log('clearInterval');
+        this.timer = undefined;
+    },
+    componentWillMount: function () {
+      console.log('componentWillMount');
+    },
+    componentDidMount: function () {
+        console.log('componentDidMount');
     },
     render: function () {
       var {count, countdownStatus} = this.state;

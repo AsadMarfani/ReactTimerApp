@@ -12721,6 +12721,9 @@ var Controls = React.createClass({
             _this.props.onStatusChange(newStatus);
         };
     },
+    componentWillReceiveProps: function componentWillReceiveProps(newProps) {
+        console.log('componentWillReceiveProps', newProps.countdownStatus);
+    },
     render: function render() {
         var _this2 = this;
 
@@ -12780,7 +12783,6 @@ var Countdown = React.createClass({
     },
     componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
         if (this.state.countdownStatus !== prevState.countdownStatus) {
-            console.log(this.state.countdownStatus);
             switch (this.state.countdownStatus) {
                 case 'started':
                     this.startTimer();
@@ -12805,6 +12807,11 @@ var Countdown = React.createClass({
             _this.setState({
                 count: newCount >= 0 ? newCount : 0
             });
+            if (newCount === 0) {
+                _this.setState({
+                    countdownStatus: 'stopped'
+                });
+            }
         }, 1000);
     },
     _handleCountdownTimer: function _handleCountdownTimer(totalSeconds) {
@@ -12817,6 +12824,21 @@ var Countdown = React.createClass({
         this.setState({
             countdownStatus: newStatus
         });
+    },
+    componentWillUpdate: function componentWillUpdate(nextProps, nextState) {
+        console.log('componentWillUpdate');
+    },
+    componentWillUnmount: function componentWillUnmount() {
+        console.log('componentWillUnmount');
+        clearInterval(this.timer);
+        console.log('clearInterval');
+        this.timer = undefined;
+    },
+    componentWillMount: function componentWillMount() {
+        console.log('componentWillMount');
+    },
+    componentDidMount: function componentDidMount() {
+        console.log('componentDidMount');
     },
     render: function render() {
         var _this2 = this;
